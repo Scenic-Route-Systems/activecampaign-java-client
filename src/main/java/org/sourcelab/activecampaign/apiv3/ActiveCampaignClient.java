@@ -26,6 +26,7 @@ import org.sourcelab.activecampaign.apiv3.request.account.AccountUpdateRequest;
 import org.sourcelab.activecampaign.apiv3.request.contact.Contact;
 import org.sourcelab.activecampaign.apiv3.request.contact.ContactCreateRequest;
 import org.sourcelab.activecampaign.apiv3.request.contact.ContactRetrieveRequest;
+import org.sourcelab.activecampaign.apiv3.request.contact.ContactSearchRequest;
 import org.sourcelab.activecampaign.apiv3.request.contactList.ContactListSubscribeRequest;
 import org.sourcelab.activecampaign.apiv3.request.contactTag.ContactTag;
 import org.sourcelab.activecampaign.apiv3.request.contactTag.ContactTagCreateRequest;
@@ -40,6 +41,7 @@ import org.sourcelab.activecampaign.apiv3.response.account.AccountListResponse;
 import org.sourcelab.activecampaign.apiv3.response.account.AccountResponse;
 import org.sourcelab.activecampaign.apiv3.response.contact.ContactCreateResponse;
 import org.sourcelab.activecampaign.apiv3.response.contact.ContactRetrieveResponse;
+import org.sourcelab.activecampaign.apiv3.response.contact.ContactSearchResponse;
 import org.sourcelab.activecampaign.apiv3.response.contactTag.ContactTagCreateResponse;
 import org.sourcelab.activecampaign.apiv3.response.contactTag.ContactTagDeleteResponse;
 import org.sourcelab.activecampaign.apiv3.response.customField.CustomFieldListResponse;
@@ -143,6 +145,11 @@ public class ActiveCampaignClient extends AbstractClient {
 
     public ContactRetrieveResponse contactRetrieve(final long contactId) {
         return submitRequest(new ContactRetrieveRequest(contactId));
+    }
+
+    // TODO
+    public ContactSearchResponse contactSearch(final long listId, final String filterCreatedAfter) {
+        return submitRequest(new ContactSearchRequest(listId, filterCreatedAfter));
     }
 
     public TagListResponse tagList() {
