@@ -31,7 +31,6 @@ public class DealSearchResponse {
                 null, //@JsonProperty("description") final String description,
                 null, //@JsonProperty("stage") final String stage,
                 null, //@JsonProperty("status") final String status,
-                null, //final List<Deal.FieldValue> fieldValues,
                 (Map<String, String>) dealValues.get("links")
             );
 

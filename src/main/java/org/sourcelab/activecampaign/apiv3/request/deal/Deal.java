@@ -6,10 +6,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @JsonRootName(value = "deal")
@@ -17,13 +15,12 @@ import java.util.Map;
 public class Deal {
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private final Long id;
-    private final String contact;
-    private final String organization;
+    private final Long contact;
+    private final Long organization;
     private final String title;
     private final String description;
-    private final String stage;
-    private final String status; // Open, Won, Lost
-    private final List<FieldValue> fieldValues;
+    private final Long stage;
+    private final Long status; // Open, Won, Lost
 
     // Related links
     private final Map<String, String> links;
@@ -31,13 +28,12 @@ public class Deal {
     @JsonCreator
     public Deal(
         @JsonProperty("id") final Long id,
-        @JsonProperty("contact") final String contact,
-        @JsonProperty("organization") final String organization,
+        @JsonProperty("contact") final Long contact,
+        @JsonProperty("organization") final Long organization,
         @JsonProperty("title") final String title,
         @JsonProperty("description") final String description,
-        @JsonProperty("stage") final String stage,
-        @JsonProperty("status") final String status,
-        final List<FieldValue> fieldValues,
+        @JsonProperty("stage") final Long stage,
+        @JsonProperty("status") final Long status,
         @JsonProperty("links") final Map<String, String> links
     ) {
         this.id = id;
@@ -47,11 +43,6 @@ public class Deal {
         this.description = description;
         this.stage = stage;
         this.status = status;
-        if (fieldValues == null) {
-            this.fieldValues = Collections.emptyList();
-        } else {
-            this.fieldValues = Collections.unmodifiableList(new ArrayList<>(fieldValues));
-        }
 
         if (links == null) {
             this.links = Collections.emptyMap();
@@ -64,11 +55,11 @@ public class Deal {
         return id;
     }
 
-    public String getContact() {
+    public Long getContact() {
         return contact;
     }
 
-    public String getOrganization() {
+    public Long getOrganization() {
         return organization;
     }
 
@@ -80,16 +71,12 @@ public class Deal {
         return description;
     }
 
-    public String getStage() {
+    public Long getStage() {
         return stage;
     }
 
-    public String getStatus() {
+    public Long getStatus() {
         return status;
-    }
-
-    public List<FieldValue> getFieldValues() {
-        return fieldValues;
     }
 
     public Map<String, String> getLinks() {
@@ -106,39 +93,7 @@ public class Deal {
             ", description='" + description + '\'' +
             ", stage='" + stage + '\'' +
             ", status='" + status + '\'' +
-            ", fieldValues=" + fieldValues +
             ", links=" + links +
             '}';
-    }
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class FieldValue {
-        private final long field;
-        private final String value;
-
-        @JsonCreator
-        public FieldValue(
-            @JsonProperty("customFieldId") final long field,
-            @JsonProperty("fieldValue") final String value
-        ) {
-            this.field = field;
-            this.value = value;
-        }
-
-        public long getField() {
-            return field;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return "FieldValue{"
-                + "field=" + field
-                + ", value='" + value + '\''
-                + '}';
-        }
     }
 }
