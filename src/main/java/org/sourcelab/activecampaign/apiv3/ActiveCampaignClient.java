@@ -26,6 +26,7 @@ import org.sourcelab.activecampaign.apiv3.request.account.AccountUpdateRequest;
 import org.sourcelab.activecampaign.apiv3.request.contact.Contact;
 import org.sourcelab.activecampaign.apiv3.request.contact.ContactCreateRequest;
 import org.sourcelab.activecampaign.apiv3.request.contact.ContactRetrieveRequest;
+import org.sourcelab.activecampaign.apiv3.request.contact.ContactSearch;
 import org.sourcelab.activecampaign.apiv3.request.contact.ContactSearchRequest;
 import org.sourcelab.activecampaign.apiv3.request.contactList.ContactListSubscribeRequest;
 import org.sourcelab.activecampaign.apiv3.request.contactTag.ContactTag;
@@ -147,9 +148,8 @@ public class ActiveCampaignClient extends AbstractClient {
         return submitRequest(new ContactRetrieveRequest(contactId));
     }
 
-    // TODO
-    public ContactSearchResponse contactSearch(final long listId, final String filterCreatedAfter) {
-        return submitRequest(new ContactSearchRequest(listId, filterCreatedAfter));
+    public ContactSearchResponse contactSearch(ContactSearch contactSearch) {
+        return submitRequest(new ContactSearchRequest(contactSearch));
     }
 
     public TagListResponse tagList() {

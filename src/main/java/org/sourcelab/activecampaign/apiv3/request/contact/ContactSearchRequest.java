@@ -1,7 +1,6 @@
 package org.sourcelab.activecampaign.apiv3.request.contact;
 
 import org.sourcelab.activecampaign.JacksonFactory;
-import org.sourcelab.activecampaign.apiv3.response.contact.ContactRetrieveResponse;
 import org.sourcelab.activecampaign.apiv3.response.contact.ContactSearchResponse;
 import org.sourcelab.http.rest.request.Request;
 import org.sourcelab.http.rest.request.RequestMethod;
@@ -11,20 +10,16 @@ import org.sourcelab.http.rest.request.body.RequestBodyContent;
 import java.io.IOException;
 
 public class ContactSearchRequest implements Request<ContactSearchResponse> {
-    private final long listId;
-    // TODO: yyyy-mm-dd format
-    private final String filterCreatedAfter;
 
-    // TODO: replace with a Search class
-    public ContactSearchRequest(final long listId, final String filterCreatedAfter) {
-        this.listId = listId;
-        this.filterCreatedAfter = filterCreatedAfter;
+    private final ContactSearch contactSearch;
+
+    public ContactSearchRequest(final ContactSearch contactSearch) {
+      this.contactSearch = contactSearch;
     }
 
-    // TODO: better way to compose query params
     @Override
     public String getApiEndpoint() {
-        return "api/3/contacts?listid=" + listId + "&filters[created_after]=" + filterCreatedAfter;
+        return "api/3/contacts?" + contactSearch.buildQueryString();
     }
 
     @Override
