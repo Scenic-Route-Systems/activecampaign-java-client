@@ -14,6 +14,7 @@ import java.util.Map;
 public class ContactSearchResponse {
     private final List<Contact> contacts = new ArrayList<>();
 
+    // TODO: Necessary? Simply unmarshal into the list of contacts?
     @JsonCreator
     public ContactSearchResponse(
         @JsonProperty("contacts") final List<Map<String, Object>> contactsValues

@@ -10,8 +10,8 @@ public class ContactSearch extends RequestWithQueryString {
   }
 
   // yyyy-mm-dd
-  public ContactSearch withFilterCreatedAfter(final String filterCreatedAfter) {
-    queryParams.put("filters[created_after]", filterCreatedAfter);
+  public ContactSearch withCreatedAfter(final String createdAfter) {
+    queryParams.put("filters[created_after]", createdAfter);
     return this;
   }
 }
