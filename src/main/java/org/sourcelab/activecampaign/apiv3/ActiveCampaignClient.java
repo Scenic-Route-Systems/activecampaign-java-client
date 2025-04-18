@@ -33,6 +33,9 @@ import org.sourcelab.activecampaign.apiv3.request.contactTag.ContactTag;
 import org.sourcelab.activecampaign.apiv3.request.contactTag.ContactTagCreateRequest;
 import org.sourcelab.activecampaign.apiv3.request.contactTag.ContactTagDeleteRequest;
 import org.sourcelab.activecampaign.apiv3.request.customField.CustomFieldListRequest;
+import org.sourcelab.activecampaign.apiv3.request.deal.DealCustomFieldListRequest;
+import org.sourcelab.activecampaign.apiv3.request.deal.DealSearch;
+import org.sourcelab.activecampaign.apiv3.request.deal.DealSearchRequest;
 import org.sourcelab.activecampaign.apiv3.request.list.ListListRequest;
 import org.sourcelab.activecampaign.apiv3.request.tag.TagCreateRequest;
 import org.sourcelab.activecampaign.apiv3.request.tag.TagListRequest;
@@ -46,6 +49,8 @@ import org.sourcelab.activecampaign.apiv3.response.contact.ContactSearchResponse
 import org.sourcelab.activecampaign.apiv3.response.contactTag.ContactTagCreateResponse;
 import org.sourcelab.activecampaign.apiv3.response.contactTag.ContactTagDeleteResponse;
 import org.sourcelab.activecampaign.apiv3.response.customField.CustomFieldListResponse;
+import org.sourcelab.activecampaign.apiv3.response.deal.DealCustomFieldListResponse;
+import org.sourcelab.activecampaign.apiv3.response.deal.DealSearchResponse;
 import org.sourcelab.activecampaign.apiv3.response.list.ListListResponse;
 import org.sourcelab.activecampaign.apiv3.response.tag.TagCreateResponse;
 import org.sourcelab.activecampaign.apiv3.response.tag.TagListResponse;
@@ -150,6 +155,14 @@ public class ActiveCampaignClient extends AbstractClient {
 
     public ContactSearchResponse contactSearch(ContactSearch contactSearch) {
         return submitRequest(new ContactSearchRequest(contactSearch));
+    }
+
+    public DealSearchResponse dealSearch(DealSearch dealSearch) {
+        return submitRequest(new DealSearchRequest(dealSearch));
+    }
+
+    public DealCustomFieldListResponse dealCustomFieldsList(Long dealId) {
+        return submitRequest(new DealCustomFieldListRequest(dealId));
     }
 
     public TagListResponse tagList() {
