@@ -37,6 +37,8 @@ import org.sourcelab.activecampaign.apiv3.request.deal.DealCustomFieldListReques
 import org.sourcelab.activecampaign.apiv3.request.deal.DealSearch;
 import org.sourcelab.activecampaign.apiv3.request.deal.DealSearchRequest;
 import org.sourcelab.activecampaign.apiv3.request.list.ListListRequest;
+import org.sourcelab.activecampaign.apiv3.request.pipeline.PipelineListRequest;
+import org.sourcelab.activecampaign.apiv3.request.stage.StageListRequest;
 import org.sourcelab.activecampaign.apiv3.request.tag.TagCreateRequest;
 import org.sourcelab.activecampaign.apiv3.request.tag.TagListRequest;
 import org.sourcelab.activecampaign.apiv3.request.user.UsersMeRequest;
@@ -52,6 +54,8 @@ import org.sourcelab.activecampaign.apiv3.response.customField.CustomFieldListRe
 import org.sourcelab.activecampaign.apiv3.response.deal.DealCustomFieldListResponse;
 import org.sourcelab.activecampaign.apiv3.response.deal.DealSearchResponse;
 import org.sourcelab.activecampaign.apiv3.response.list.ListListResponse;
+import org.sourcelab.activecampaign.apiv3.response.pipeline.PipelineListResponse;
+import org.sourcelab.activecampaign.apiv3.response.stage.StageListResponse;
 import org.sourcelab.activecampaign.apiv3.response.tag.TagCreateResponse;
 import org.sourcelab.activecampaign.apiv3.response.tag.TagListResponse;
 import org.sourcelab.activecampaign.apiv3.response.user.UsersMeResponse;
@@ -187,6 +191,14 @@ public class ActiveCampaignClient extends AbstractClient {
      */
     public CustomFieldListResponse customFieldList() {
         return submitRequest(new CustomFieldListRequest());
+    }
+
+    public PipelineListResponse pipelineList() {
+        return submitRequest(new PipelineListRequest());
+    }
+
+    public StageListResponse stageList() {
+        return submitRequest(new StageListRequest());
     }
 
     public ListListResponse listList() {
