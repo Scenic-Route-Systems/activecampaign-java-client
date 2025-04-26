@@ -20,36 +20,71 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
+/**
+ *
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DealCustomFieldListResponse {
-    private final List<DealField> fields;
+public class DealField {
+    private final Long id;
+    private final String fieldLabel;
+    private final String fieldType;
+    private final String fieldDefault;
 
-    /**
-     * Constructor.
-     */
+    // Related links
+    private final Map<String, String> links;
+
     @JsonCreator
-    public DealCustomFieldListResponse(
-        @JsonProperty("dealCustomFieldMeta") final List<DealField> fields
+    public DealField(
+        @JsonProperty("id") final Long id,
+        @JsonProperty("fieldLabel") final String fieldLabel,
+        @JsonProperty("fieldType") final String fieldType,
+        @JsonProperty("fieldDefault")  final String fieldDefault,
+        @JsonProperty("links")  final Map<String,String> links
     ) {
-        if (fields == null) {
-            this.fields = Collections.emptyList();
+        this.id = id;
+        this.fieldLabel = fieldLabel;
+        this.fieldType = fieldType;
+        this.fieldDefault = fieldDefault;
+
+        if (links == null) {
+            this.links = Collections.emptyMap();
         } else {
-            this.fields = Collections.unmodifiableList(new ArrayList<>(fields));
+            this.links = Collections.unmodifiableMap(new HashMap<>(links));
         }
     }
 
-    public List<DealField> getFields() {
-        return fields;
+    public Long getId() {
+        return id;
+    }
+
+    public String getFieldLabel() {
+        return fieldLabel;
+    }
+
+    public String getFieldType() {
+        return fieldType;
+    }
+
+    public String getFieldDefault() {
+        return fieldDefault;
+    }
+
+    public Map<String, String> getLinks() {
+        return links;
     }
 
     @Override
     public String toString() {
-        return "DealCustomFieldListResponse{"
-            + "fields=" + fields
+        return "Field{"
+            + "id=" + id
+            + ", fieldLabel='" + fieldLabel + '\''
+            + ", fieldType='" + fieldType + '\''
+            + ", fieldDefault='" + fieldDefault + '\''
+            + ", links=" + links
             + '}';
     }
 }

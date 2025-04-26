@@ -34,6 +34,7 @@ import org.sourcelab.activecampaign.apiv3.request.contactTag.ContactTagCreateReq
 import org.sourcelab.activecampaign.apiv3.request.contactTag.ContactTagDeleteRequest;
 import org.sourcelab.activecampaign.apiv3.request.customField.CustomFieldListRequest;
 import org.sourcelab.activecampaign.apiv3.request.deal.DealCustomFieldListRequest;
+import org.sourcelab.activecampaign.apiv3.request.deal.DealCustomFieldValueListRequest;
 import org.sourcelab.activecampaign.apiv3.request.deal.DealSearch;
 import org.sourcelab.activecampaign.apiv3.request.deal.DealSearchRequest;
 import org.sourcelab.activecampaign.apiv3.request.list.ListListRequest;
@@ -52,6 +53,7 @@ import org.sourcelab.activecampaign.apiv3.response.contactTag.ContactTagCreateRe
 import org.sourcelab.activecampaign.apiv3.response.contactTag.ContactTagDeleteResponse;
 import org.sourcelab.activecampaign.apiv3.response.customField.CustomFieldListResponse;
 import org.sourcelab.activecampaign.apiv3.response.deal.DealCustomFieldListResponse;
+import org.sourcelab.activecampaign.apiv3.response.deal.DealCustomFieldValueListResponse;
 import org.sourcelab.activecampaign.apiv3.response.deal.DealSearchResponse;
 import org.sourcelab.activecampaign.apiv3.response.list.ListListResponse;
 import org.sourcelab.activecampaign.apiv3.response.pipeline.PipelineListResponse;
@@ -165,8 +167,12 @@ public class ActiveCampaignClient extends AbstractClient {
         return submitRequest(new DealSearchRequest(dealSearch, offset));
     }
 
-    public DealCustomFieldListResponse dealCustomFieldsList(Long dealId, long offset) {
-        return submitRequest(new DealCustomFieldListRequest(dealId, offset));
+    public DealCustomFieldListResponse dealCustomFieldList() {
+        return submitRequest(new DealCustomFieldListRequest());
+    }
+
+    public DealCustomFieldValueListResponse dealCustomFieldValueList(Long dealId) {
+        return submitRequest(new DealCustomFieldValueListRequest(dealId));
     }
 
     public TagListResponse tagList(long offset) {
