@@ -1,41 +1,44 @@
 package org.sourcelab.activecampaign.apiv3.response.contact;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.sourcelab.activecampaign.apiv3.request.contact.Contact;
-import org.sourcelab.activecampaign.apiv3.request.contact.ContactBuilder;
+import org.sourcelab.activecampaign.apiv3.response.Meta;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ContactSearchResponse {
-    private final List<Contact> contacts = new ArrayList<>();
+    private final List<Contact> contacts;
+    private final Meta meta;
 
-    // TODO: Necessary? Simply unmarshal into the list of contacts?
     @JsonCreator
     public ContactSearchResponse(
-        @JsonProperty("contacts") final List<Map<String, Object>> contactsValues
+        @JsonProperty("contacts") final List<Contact> contacts,
+        @JsonProperty("meta") final Meta meta
     ) {
-        for (Map<String, Object> contactValues : contactsValues) {
-            final ContactBuilder builder = Contact.newBuilder()
-                .withPhone((String) contactValues.get("phone"))
-                .withFirstName((String) contactValues.get("firstName"))
-                .withLastName((String) contactValues.get("lastName"))
-                .withEmail((String) contactValues.get("email"))
-                .withId((String) contactValues.get("id"));
-
-            if (contactValues.containsKey("links")) {
-                builder.withLinks((Map<String, String>) contactValues.get("links"));
-            }
-
-            contacts.add(builder.build());
+        if (contacts == null) {
+            this.contacts = Collections.emptyList();
+        } else {
+            this.contacts = Collections.unmodifiableList(new ArrayList<>(contacts));
         }
+        this.meta = meta;
     }
 
     public List<Contact> getContacts() {
         return contacts;
+    }
+
+    public Meta getMeta() {
+        return meta;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountListResponse{" +
+            "contacts=" + contacts +
+            ", meta=" + meta +
+            '}';
     }
 }

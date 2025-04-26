@@ -19,6 +19,7 @@ package org.sourcelab.activecampaign.apiv3.response.customField;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.sourcelab.activecampaign.apiv3.response.Meta;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,28 +31,37 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CustomFieldListResponse {
     private final List<Field> fields;
+    private final Meta meta;
 
     /**
      * Constructor.
      */
     @JsonCreator
     public CustomFieldListResponse(
-        @JsonProperty("fields") final List<Field> fields) {
+        @JsonProperty("fields") final List<Field> fields,
+        @JsonProperty("meta") final Meta meta
+    ) {
         if (fields == null) {
             this.fields = Collections.emptyList();
         } else {
             this.fields = Collections.unmodifiableList(new ArrayList<>(fields));
         }
+        this.meta = meta;
     }
 
     public List<Field> getFields() {
         return fields;
     }
 
+    public Meta getMeta() {
+        return meta;
+    }
+
     @Override
     public String toString() {
         return "CustomFieldListResponse{"
             + "fields=" + fields
+            + ", meta=" + meta
             + '}';
     }
 }
