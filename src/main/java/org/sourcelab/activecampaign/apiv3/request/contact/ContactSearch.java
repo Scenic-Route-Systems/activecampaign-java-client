@@ -1,8 +1,8 @@
 package org.sourcelab.activecampaign.apiv3.request.contact;
 
-import org.sourcelab.activecampaign.apiv3.request.RequestWithQueryString;
+import org.sourcelab.activecampaign.apiv3.request.DTOWithQueryString;
 
-public class ContactSearch extends RequestWithQueryString {
+public class ContactSearch extends DTOWithQueryString {
 
   public ContactSearch withListId(final long listId) {
     queryParams.put("listid", listId + "");

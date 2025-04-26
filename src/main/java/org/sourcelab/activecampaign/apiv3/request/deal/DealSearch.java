@@ -1,8 +1,8 @@
 package org.sourcelab.activecampaign.apiv3.request.deal;
 
-import org.sourcelab.activecampaign.apiv3.request.RequestWithQueryString;
+import org.sourcelab.activecampaign.apiv3.request.DTOWithQueryString;
 
-public class DealSearch extends RequestWithQueryString {
+public class DealSearch extends DTOWithQueryString {
 
   public DealSearch withContact(final String contact) {
     queryParams.put("filters[contact]", contact);

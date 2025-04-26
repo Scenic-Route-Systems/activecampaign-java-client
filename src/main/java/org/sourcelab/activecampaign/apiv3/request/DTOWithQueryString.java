@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class RequestWithQueryString {
+public abstract class DTOWithQueryString {
 
   protected final Map<String, String> queryParams = new HashMap<>();
 
