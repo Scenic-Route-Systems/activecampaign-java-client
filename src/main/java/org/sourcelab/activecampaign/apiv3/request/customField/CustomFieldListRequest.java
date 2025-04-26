@@ -27,9 +27,15 @@ import java.io.IOException;
  */
 public class CustomFieldListRequest implements GetRequest<CustomFieldListResponse> {
 
+    private final long offset;
+
+    public CustomFieldListRequest(long offset) {
+        this.offset = offset;
+    }
+
     @Override
     public String getApiEndpoint() {
-        return "api/3/fields";
+        return "api/3/fields?offset=" + offset;
     }
 
     @Override

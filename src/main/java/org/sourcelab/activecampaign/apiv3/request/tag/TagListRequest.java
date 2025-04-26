@@ -23,13 +23,19 @@ import org.sourcelab.http.rest.request.GetRequest;
 import java.io.IOException;
 
 /**
- * Represents an account list request.
+ * Represents a tag list request.
  */
 public class TagListRequest implements GetRequest<TagListResponse> {
 
+    private final long offset;
+
+    public TagListRequest(long offset) {
+        this.offset = offset;
+    }
+
     @Override
     public String getApiEndpoint() {
-        return "api/3/tags";
+        return "api/3/tags?offset=" + offset;
     }
 
     @Override

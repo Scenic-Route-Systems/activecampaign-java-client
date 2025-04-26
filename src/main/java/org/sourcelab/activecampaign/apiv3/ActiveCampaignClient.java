@@ -100,8 +100,8 @@ public class ActiveCampaignClient extends AbstractClient {
      * Retrieve all existing accounts.
      * @return all accounts.
      */
-    public AccountListResponse accountList() {
-        return submitRequest(new AccountListRequest());
+    public AccountListResponse accountList(long offset) {
+        return submitRequest(new AccountListRequest(offset));
     }
 
     public AccountResponse accountsRetrieve(final Long id) {
@@ -157,20 +157,20 @@ public class ActiveCampaignClient extends AbstractClient {
         return submitRequest(new ContactRetrieveRequest(contactId));
     }
 
-    public ContactSearchResponse contactSearch(ContactSearch contactSearch) {
-        return submitRequest(new ContactSearchRequest(contactSearch));
+    public ContactSearchResponse contactSearch(ContactSearch contactSearch, long offset) {
+        return submitRequest(new ContactSearchRequest(contactSearch, offset));
     }
 
-    public DealSearchResponse dealSearch(DealSearch dealSearch) {
-        return submitRequest(new DealSearchRequest(dealSearch));
+    public DealSearchResponse dealSearch(DealSearch dealSearch, long offset) {
+        return submitRequest(new DealSearchRequest(dealSearch, offset));
     }
 
-    public DealCustomFieldListResponse dealCustomFieldsList(Long dealId) {
-        return submitRequest(new DealCustomFieldListRequest(dealId));
+    public DealCustomFieldListResponse dealCustomFieldsList(Long dealId, long offset) {
+        return submitRequest(new DealCustomFieldListRequest(dealId, offset));
     }
 
-    public TagListResponse tagList() {
-        return submitRequest(new TagListRequest());
+    public TagListResponse tagList(long offset) {
+        return submitRequest(new TagListRequest(offset));
     }
 
     public TagCreateResponse tagCreate(final TagCreateRequest request) {
@@ -189,16 +189,16 @@ public class ActiveCampaignClient extends AbstractClient {
      * Retrieve all Custom Fields defined.
      * @return Custom Field List Response.
      */
-    public CustomFieldListResponse customFieldList() {
-        return submitRequest(new CustomFieldListRequest());
+    public CustomFieldListResponse customFieldList(long offset) {
+        return submitRequest(new CustomFieldListRequest(offset));
     }
 
-    public PipelineListResponse pipelineList() {
-        return submitRequest(new PipelineListRequest());
+    public PipelineListResponse pipelineList(long offset) {
+        return submitRequest(new PipelineListRequest(offset));
     }
 
-    public StageListResponse stageList() {
-        return submitRequest(new StageListRequest());
+    public StageListResponse stageList(long offset) {
+        return submitRequest(new StageListRequest(offset));
     }
 
     public ListListResponse listList() {

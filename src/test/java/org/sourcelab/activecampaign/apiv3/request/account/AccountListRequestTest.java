@@ -35,7 +35,7 @@ class AccountListRequestTest extends AbstractRequestTest {
     @Test
     void testParsingResponse() throws IOException {
         final String input = readFile("accountsList.json");
-        final AccountListResponse parsed = new AccountListRequest()
+        final AccountListResponse parsed = new AccountListRequest(0)
             .parseResponse(input);
 
         // Validate accounts

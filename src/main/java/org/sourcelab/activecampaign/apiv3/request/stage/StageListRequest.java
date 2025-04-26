@@ -8,9 +8,15 @@ import java.io.IOException;
 
 public class StageListRequest implements GetRequest<StageListResponse> {
 
+    private final long offset;
+
+    public StageListRequest(long offset) {
+        this.offset = offset;
+    }
+
     @Override
     public String getApiEndpoint() {
-        return "api/3/dealStages";
+        return "api/3/dealStages?offset=" + offset;
     }
 
     @Override

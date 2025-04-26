@@ -8,9 +8,15 @@ import java.io.IOException;
 
 public class PipelineListRequest implements GetRequest<PipelineListResponse> {
 
+    private final long offset;
+
+    public PipelineListRequest(long offset) {
+        this.offset = offset;
+    }
+
     @Override
     public String getApiEndpoint() {
-        return "api/3/dealGroups";
+        return "api/3/dealGroups?offset=" + offset;
     }
 
     @Override

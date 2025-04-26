@@ -27,9 +27,15 @@ import java.io.IOException;
  */
 public class AccountListRequest implements GetRequest<AccountListResponse> {
 
+    private final long offset;
+
+    public AccountListRequest(long offset) {
+        this.offset = offset;
+    }
+
     @Override
     public String getApiEndpoint() {
-        return "api/3/accounts";
+        return "api/3/accounts?offset=" + offset;
     }
 
     @Override
