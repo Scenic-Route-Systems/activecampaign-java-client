@@ -12,14 +12,16 @@ import java.io.IOException;
 public class DealSearchRequest implements Request<DealSearchResponse> {
 
     private final DealSearch dealSearch;
+    private final long offset;
 
-    public DealSearchRequest(final DealSearch dealSearch) {
+    public DealSearchRequest(final DealSearch dealSearch, long offset) {
       this.dealSearch = dealSearch;
+      this.offset = offset;
     }
 
     @Override
     public String getApiEndpoint() {
-        return "api/3/deals?" + dealSearch.buildQueryString();
+        return "api/3/deals?offset=" + offset + "&" + dealSearch.buildQueryString();
     }
 
     @Override

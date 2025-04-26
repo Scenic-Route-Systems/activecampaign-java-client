@@ -23,16 +23,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Meta response object.
  */
 public class Meta {
-    private final int total;
+    private final long total;
 
     @JsonCreator
     public Meta(
-        @JsonProperty("total") final int total
+        @JsonProperty("total") final long total
     ) {
         this.total = total;
     }
 
-    public int getTotal() {
+    public long getTotal() {
         return total;
     }
 

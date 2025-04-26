@@ -12,14 +12,16 @@ import java.io.IOException;
 public class ContactSearchRequest implements Request<ContactSearchResponse> {
 
     private final ContactSearch contactSearch;
+    private final long offset;
 
-    public ContactSearchRequest(final ContactSearch contactSearch) {
+    public ContactSearchRequest(final ContactSearch contactSearch, long offset) {
       this.contactSearch = contactSearch;
+      this.offset = offset;
     }
 
     @Override
     public String getApiEndpoint() {
-        return "api/3/contacts?" + contactSearch.buildQueryString();
+        return "api/3/contacts?offset=" + offset + "&" + contactSearch.buildQueryString();
     }
 
     @Override

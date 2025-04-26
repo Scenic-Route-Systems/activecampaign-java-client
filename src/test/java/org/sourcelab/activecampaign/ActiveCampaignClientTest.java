@@ -25,7 +25,6 @@ import org.slf4j.LoggerFactory;
 import org.sourcelab.activecampaign.apiv3.ActiveCampaignClient;
 import org.sourcelab.activecampaign.apiv3.ApiConfig;
 import org.sourcelab.activecampaign.apiv3.request.contact.Contact;
-import org.sourcelab.activecampaign.apiv3.request.contact.ContactRetrieveRequest;
 import org.sourcelab.activecampaign.apiv3.request.contactList.ContactListSubscribeRequest;
 import org.sourcelab.activecampaign.apiv3.request.contactTag.ContactTag;
 import org.sourcelab.activecampaign.apiv3.request.tag.TagCreateRequest;
@@ -135,7 +134,7 @@ class ActiveCampaignClientTest {
         assertNotNull(resp.getAccount());
         assertNotNull(resp.getAccount().getId());
 
-        final AccountListResponse response = apiV3Client.accountList();
+        final AccountListResponse response = apiV3Client.accountList(0);
         //logger.info("{}", response);
 
         final Optional<Account> createdAccountOptional = response.getAccounts()
@@ -251,7 +250,7 @@ class ActiveCampaignClientTest {
      */
     @Test
     void testListCustomFields() {
-        final CustomFieldListResponse resp = apiV3Client.customFieldList();
+        final CustomFieldListResponse resp = apiV3Client.customFieldList(0);
         logger.info("Resop: {}", resp);
     }
 
@@ -273,7 +272,7 @@ class ActiveCampaignClientTest {
      */
     @Test
     void testTagList() {
-        final TagListResponse resp = apiV3Client.tagList();
+        final TagListResponse resp = apiV3Client.tagList(0);
         logger.info("Resop: {}", resp);
     }
 
