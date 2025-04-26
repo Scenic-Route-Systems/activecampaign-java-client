@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.sourcelab.activecampaign.apiv3.request.deal.Deal;
+import org.sourcelab.activecampaign.apiv3.response.Meta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +14,14 @@ import java.util.Map;
 public class DealSearchResponse {
 //    private final List<Deal> deals;
     private final List<Deal> deals = new ArrayList<>();
+    private final Meta meta;
 
     @JsonCreator
     public DealSearchResponse(
 //        @JsonProperty("deals") final List<Deal> deals
         // TODO: temporarily keeping this so I can see all the values for debugging
-        @JsonProperty("deals") final List<Map<String, Object>> dealsValues
+        @JsonProperty("deals") final List<Map<String, Object>> dealsValues,
+        @JsonProperty("meta") final Meta meta
     ) {
 //        this.deals = deals;
 
@@ -36,9 +39,23 @@ public class DealSearchResponse {
 
             deals.add(deal);
         }
+
+        this.meta = meta;
     }
 
     public List<Deal> getDeals() {
         return deals;
+    }
+
+    public Meta getMeta() {
+        return meta;
+    }
+
+    @Override
+    public String toString() {
+        return "DealSearchResponse{" +
+            "deals=" + deals +
+            ", meta=" + meta +
+            '}';
     }
 }
