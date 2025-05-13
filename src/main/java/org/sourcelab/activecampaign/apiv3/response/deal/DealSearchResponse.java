@@ -26,14 +26,16 @@ public class DealSearchResponse {
 //        this.deals = deals;
 
         for (Map<String, Object> dealValues : dealsValues) {
+            String organization = (String) dealValues.get("organization");
             final Deal deal = new Deal(
                 Long.parseLong((String) dealValues.get("id")),
-                null, //@JsonProperty("contact") final String contact,
-                null, //@JsonProperty("organization") final String organization,
-                null, //@JsonProperty("title") final String title,
-                null, //@JsonProperty("description") final String description,
-                null, //@JsonProperty("stage") final String stage,
-                null, //@JsonProperty("status") final String status,
+                Long.parseLong((String) dealValues.get("contact")),
+                (organization == null || organization.isEmpty())
+                    ? null : Long.parseLong((String) dealValues.get("organization")),
+                (String) dealValues.get("title"),
+                (String) dealValues.get("description"),
+                Long.parseLong((String) dealValues.get("stage")),
+                Long.parseLong((String) dealValues.get("status")),
                 (Map<String, String>) dealValues.get("links")
             );
 

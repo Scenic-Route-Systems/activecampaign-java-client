@@ -30,7 +30,7 @@ public class DealCustomFieldListResponse {
                 Long.parseLong(dealCustomFieldMap.get("id").toString()),
                 Long.parseLong(dealCustomFieldMap.get("dealId").toString()),
                 Long.parseLong(dealCustomFieldMap.get("customFieldId").toString()),
-                dealCustomFieldMap.get("fieldValue").toString()
+                (String) dealCustomFieldMap.get("fieldValue")
             );
 
             dealCustomFields.add(dealCustomField);
