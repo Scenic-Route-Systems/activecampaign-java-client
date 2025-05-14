@@ -21,6 +21,8 @@ public class Deal {
     private final String description;
     private final Long stage;
     private final Long status; // Open, Won, Lost
+    private final String createdDate;
+    private final String updatedDate;
 
     // Related links
     private final Map<String, String> links;
@@ -34,6 +36,8 @@ public class Deal {
         @JsonProperty("description") final String description,
         @JsonProperty("stage") final Long stage,
         @JsonProperty("status") final Long status,
+        @JsonProperty("cdate") final String createdDate,
+        @JsonProperty("mdate") final String updatedDate,
         @JsonProperty("links") final Map<String, String> links
     ) {
         this.id = id;
@@ -43,8 +47,10 @@ public class Deal {
         this.description = description;
         this.stage = stage;
         this.status = status;
+      this.createdDate = createdDate;
+      this.updatedDate = updatedDate;
 
-        if (links == null) {
+      if (links == null) {
             this.links = Collections.emptyMap();
         } else {
             this.links = Collections.unmodifiableMap(new HashMap<>(links));
@@ -79,6 +85,14 @@ public class Deal {
         return status;
     }
 
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public String getUpdatedDate() {
+        return updatedDate;
+    }
+
     public Map<String, String> getLinks() {
         return links;
     }
@@ -93,6 +107,8 @@ public class Deal {
             ", description='" + description + '\'' +
             ", stage='" + stage + '\'' +
             ", status='" + status + '\'' +
+            ", createdDate='" + createdDate + '\'' +
+            ", updatedDate='" + updatedDate + '\'' +
             ", links=" + links +
             '}';
     }

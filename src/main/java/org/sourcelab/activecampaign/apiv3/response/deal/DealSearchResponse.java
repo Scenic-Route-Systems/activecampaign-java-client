@@ -36,6 +36,8 @@ public class DealSearchResponse {
                 (String) dealValues.get("description"),
                 Long.parseLong((String) dealValues.get("stage")),
                 Long.parseLong((String) dealValues.get("status")),
+                (String) dealValues.get("cdate"),
+                (String) dealValues.get("mdate"),
                 (Map<String, String>) dealValues.get("links")
             );
 
