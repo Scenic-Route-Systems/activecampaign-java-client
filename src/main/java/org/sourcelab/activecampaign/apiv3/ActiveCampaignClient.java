@@ -171,8 +171,8 @@ public class ActiveCampaignClient extends AbstractClient {
         return submitRequest(new DealCustomFieldListRequest());
     }
 
-    public DealCustomFieldValueListResponse dealCustomFieldValueList(Long dealId) {
-        return submitRequest(new DealCustomFieldValueListRequest(dealId));
+    public DealCustomFieldValueListResponse dealCustomFieldValueList(Long dealId, long offset) {
+        return submitRequest(new DealCustomFieldValueListRequest(dealId, offset));
     }
 
     public TagListResponse tagList(long offset) {

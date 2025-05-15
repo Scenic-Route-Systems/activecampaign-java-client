@@ -12,14 +12,16 @@ import java.io.IOException;
 public class DealCustomFieldValueListRequest implements Request<DealCustomFieldValueListResponse> {
 
     private final Long dealId;
+    private final long offset;
 
-    public DealCustomFieldValueListRequest(final Long dealId) {
+    public DealCustomFieldValueListRequest(final Long dealId, long offset) {
       this.dealId = dealId;
+      this.offset = offset;
     }
 
     @Override
     public String getApiEndpoint() {
-        return "api/3/dealCustomFieldData?&filters[dealId]=" + dealId;
+        return "api/3/dealCustomFieldData?offset=" + offset + "&filters[dealId]=" + dealId;
     }
 
     @Override
