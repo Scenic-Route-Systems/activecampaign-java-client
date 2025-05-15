@@ -14,6 +14,7 @@ import java.util.Map;
 public class DealCustomFieldValueListResponse {
 //    private final List<DealCustomField> dealCustomFieldData;
     private final List<DealCustomField> dealCustomFields = new ArrayList<>();
+    private final Meta meta;
 
     @JsonCreator
     public DealCustomFieldValueListResponse(
@@ -34,16 +35,23 @@ public class DealCustomFieldValueListResponse {
 
             dealCustomFields.add(dealCustomField);
         }
+
+        this.meta = meta;
     }
 
     public List<DealCustomField> getDealCustomFields() {
         return dealCustomFields;
     }
 
+    public Meta getMeta() {
+        return meta;
+    }
+
     @Override
     public String toString() {
         return "DealCustomFieldValueListResponse{" +
             "dealCustomFields=" + dealCustomFields +
+            ", meta=" + meta +
             '}';
     }
 }
