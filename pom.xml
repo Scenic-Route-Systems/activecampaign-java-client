@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.sourcelab.activecampaign</groupId>
-    <artifactId>ApiClient</artifactId>
+    <groupId>systems.scenicroute.integration</groupId>
+    <artifactId>activecampaign-java-client</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -24,6 +24,12 @@
             <email>stephen.powis@gmail.com</email>
             <organization>SourceLab.org</organization>
             <organizationUrl>https://www.sourcelab.org/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Brett Meyer</name>
+            <email>brett@scenicroute.systems</email>
+            <organization>Scenic Route Systems</organization>
+            <organizationUrl>https://scenicroute.systems</organizationUrl>
         </developer>
     </developers>
 
@@ -253,14 +259,13 @@
 
             <!-- Release plugin -->
             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.8</version>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.7.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
                 </configuration>
             </plugin>
         </plugins>
@@ -283,15 +288,6 @@
 <!--            </plugins>-->
 <!--        </pluginManagement>-->
     </build>
-
-    <!-- For deploying to maven central -->
-    <distributionManagement>
-        <!-- Snapshot repository -->
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <!-- release profile for deploying -->
     <profiles>
