@@ -43,6 +43,8 @@ import org.sourcelab.activecampaign.apiv3.request.stage.StageListRequest;
 import org.sourcelab.activecampaign.apiv3.request.tag.TagCreateRequest;
 import org.sourcelab.activecampaign.apiv3.request.tag.TagListRequest;
 import org.sourcelab.activecampaign.apiv3.request.user.UsersMeRequest;
+import org.sourcelab.activecampaign.apiv3.request.webhook.Webhook;
+import org.sourcelab.activecampaign.apiv3.request.webhook.WebhookCreateRequest;
 import org.sourcelab.activecampaign.apiv3.response.account.Account;
 import org.sourcelab.activecampaign.apiv3.response.account.AccountListResponse;
 import org.sourcelab.activecampaign.apiv3.response.account.AccountResponse;
@@ -61,6 +63,7 @@ import org.sourcelab.activecampaign.apiv3.response.stage.StageListResponse;
 import org.sourcelab.activecampaign.apiv3.response.tag.TagCreateResponse;
 import org.sourcelab.activecampaign.apiv3.response.tag.TagListResponse;
 import org.sourcelab.activecampaign.apiv3.response.user.UsersMeResponse;
+import org.sourcelab.activecampaign.apiv3.response.webhook.WebhookCreateResponse;
 import org.sourcelab.activecampaign.exception.InvalidCredentialsException;
 import org.sourcelab.http.rest.RestResponse;
 
@@ -213,6 +216,10 @@ public class ActiveCampaignClient extends AbstractClient {
 
     public String contactList(final ContactListSubscribeRequest contactListSubscribeRequest) {
         return submitRequest(contactListSubscribeRequest);
+    }
+
+    public WebhookCreateResponse webhookCreate(final Webhook webhookToCreate) {
+        return submitRequest(new WebhookCreateRequest(webhookToCreate));
     }
 
     @Override
