@@ -26,11 +26,14 @@ public class DealCustomFieldValueListResponse {
 //        this.deals = deals;
 
         for (Map<String, Object> dealCustomFieldMap : dealCustomFieldData) {
+            // fieldValue is not always a JSON string: multi-select/number/boolean custom fields
+            // come back as arrays, numbers, etc. Stringify defensively rather than casting.
+            final Object fieldValue = dealCustomFieldMap.get("fieldValue");
             final DealCustomField dealCustomField = new DealCustomField(
                 Long.parseLong(dealCustomFieldMap.get("id").toString()),
                 Long.parseLong(dealCustomFieldMap.get("dealId").toString()),
                 Long.parseLong(dealCustomFieldMap.get("customFieldId").toString()),
-                (String) dealCustomFieldMap.get("fieldValue")
+                fieldValue == null ? null : fieldValue.toString()
             );
 
             dealCustomFields.add(dealCustomField);
