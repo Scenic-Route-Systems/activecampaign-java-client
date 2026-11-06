@@ -37,4 +37,9 @@ public class DealSearch extends DTOWithQueryString {
     queryParams.put("filters[stage]", stageId + "");
     return this;
   }
+
+  public DealSearch withOrder(String field, String direction) {
+    queryParams.put("orders[" + field + "]", direction);
+    return this;
+  }
 }
